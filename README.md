@@ -1,35 +1,33 @@
-# DBRE Test - PostgreSQL Logical Replication
+# Database Reliability Engineer Test
 
-Este repositório contém a configuração de um ambiente PostgreSQL com **replicação lógica** utilizando Docker Compose.  
-O objetivo é demonstrar a criação de uma tabela no nó principal (**publisher**) e replicar os dados automaticamente para o nó secundário (**subscriber**).
+This repository contains the solution for the **Database Reliability Engineer Test** proposed by CloudWalk.  
+The project demonstrates the setup of PostgreSQL with **logical replication** using Docker Compose.
 
 ---
 
-## 🚀 Pré-requisitos
+## Project Overview
 
-Antes de rodar este projeto, instale:
+- Deploy **two PostgreSQL instances** (`pg_master` and `pg_replica`) with Docker Compose.
+- Create a database `testDB` with an `orders` table in the master instance.
+- Insert sample data into the `orders` table.
+- Configure **logical replication** from `pg_master` (publisher) to `pg_replica` (subscriber).
+- Validate that changes made in `pg_master` are replicated to `pg_replica`.
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) (Windows/Mac) ou `docker.io` + `docker-compose` (Linux).
+---
+
+## Requirements
+
+Make sure you have the following installed on your machine before running the project:
+
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 - [Git](https://git-scm.com/downloads)
-- Cliente PostgreSQL (`psql`) para validar conexões:
-  - Windows: incluído no [pgAdmin](https://www.pgadmin.org/download/).
-  - Linux:
-    ```bash
-    sudo apt install postgresql-client -y
-    ```
-  - Mac:
-    ```bash
-    brew install libpq
-    brew link --force libpq
-    ```
 
 ---
 
-## 📂 Estrutura de Arquivos
+## Setup Instructions
 
+### 1. Clone the repository
 ```bash
-dbre-test/
-│-- docker-compose.yml        # Configuração dos containers PostgreSQL
-│-- init.sql                  # Script de criação da tabela e inserts iniciais
-│-- replication-setup.sql     # Configuração da publicação/assinatura
-│-- README.md                 # Este arquivo
+git clone https://github.com/your-username/cloudwalk-dre-test.git
+cd cloudwalk-dre-test
