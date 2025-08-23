@@ -1,34 +1,35 @@
-# My Project
+# DBRE Test - PostgreSQL Logical Replication
 
-This project is designed to run multi-container applications using Docker Compose.
+Este repositório contém a configuração de um ambiente PostgreSQL com **replicação lógica** utilizando Docker Compose.  
+O objetivo é demonstrar a criação de uma tabela no nó principal (**publisher**) e replicar os dados automaticamente para o nó secundário (**subscriber**).
 
-## Getting Started
+---
 
-To get started with this project, you'll need to have Docker and Docker Compose installed on your machine.
+## 🚀 Pré-requisitos
 
-## Setup
+Antes de rodar este projeto, instale:
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd my-project
-   ```
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) (Windows/Mac) ou `docker.io` + `docker-compose` (Linux).
+- [Git](https://git-scm.com/downloads)
+- Cliente PostgreSQL (`psql`) para validar conexões:
+  - Windows: incluído no [pgAdmin](https://www.pgadmin.org/download/).
+  - Linux:
+    ```bash
+    sudo apt install postgresql-client -y
+    ```
+  - Mac:
+    ```bash
+    brew install libpq
+    brew link --force libpq
+    ```
 
-2. Build and start the services:
-   ```
-   docker-compose up
-   ```
+---
 
-3. Access the application:
-   - Open your web browser and go to `http://localhost:YOUR_PORT` (replace `YOUR_PORT` with the port specified in the `docker-compose.yml` file).
+## 📂 Estrutura de Arquivos
 
-## Stopping the Application
-
-To stop the application, run:
-```
-docker-compose down
-```
-
-## Contributing
-
-Feel free to submit issues and pull requests for any improvements or bug fixes.
+```bash
+dbre-test/
+│-- docker-compose.yml        # Configuração dos containers PostgreSQL
+│-- init.sql                  # Script de criação da tabela e inserts iniciais
+│-- replication-setup.sql     # Configuração da publicação/assinatura
+│-- README.md                 # Este arquivo
