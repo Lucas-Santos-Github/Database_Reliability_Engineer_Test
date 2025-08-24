@@ -1,7 +1,7 @@
--- Banco e schema no MASTER
-CREATE DATABASE testDB;
+-- Database and schema on pg_master
+CREATE DATABASE testdb;
 
-\c testDB;
+\c testdb;
 
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
@@ -10,7 +10,7 @@ CREATE TABLE orders (
   order_date DATE DEFAULT CURRENT_DATE
 );
 
--- Dados iniciais
+-- Initial data
 INSERT INTO orders (product_name, quantity) VALUES
 ('Laptop', 2),
 ('Mouse', 10),
